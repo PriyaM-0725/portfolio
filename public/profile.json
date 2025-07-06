@@ -1,0 +1,95 @@
+{
+  "name": "Mohanapriya M",
+  "title": "Front-End Developer & UI/UX Designer",
+  "bio": "Curious and self-driven developer passionate about building user-focused designs and solving real-world problems.",
+  "resumeLink": "/Mohanapriya.M Resume.pdf",
+  "github": "https://github.com/PriyaM-0725",
+
+  "education": [
+    {
+      "level": "SSLC",
+      "institution": "Shebha Group of Schools",
+      "year": "2019–2020",
+      "score": "78.4%",
+      "details": "Completed foundational schooling with strong basics in math and science."
+    },
+    {
+      "level": "HSC",
+      "institution": "Shebha Group of Schools",
+      "year": "2021–2022",
+      "score": "79.16%",
+      "details": "Focused on computer science, logic, and programming fundamentals."
+    },
+    {
+      "level": "B.E – CSE",
+      "institution": "KCG College of Technology",
+      "year": "2022–Present",
+      "score": "8.11 CGPA",
+      "details": "Pursuing core engineering with real-time frontend and UI/UX experience."
+    }
+  ],
+
+  "techStack": [
+    "C Programming",
+    "Python",
+    "Java",
+    "Front-End Development",
+    "UI/UX Design",
+    "Version Control"
+  ],
+
+  "certifications": [
+  {
+    "title": "Web Development Internship",
+    "organization": "Technohacks EduTech",
+    "year": "2024",
+    "description": "Completed hands-on internship focusing on responsive website design and full-stack development using modern web technologies."
+  },
+  {
+    "title": "MongoDB for Developers",
+    "organization": "MongoDB",
+    "year": "2024",
+    "description": "Completed official MongoDB course covering schema design, CRUD operations, aggregation, and indexing."
+  },
+  {
+    "title": "Junior Level Typewriting Certificate",
+    "organization": "Tamilnadu Directorate of Technical Education (DOTE)",
+    "year": "2022",
+    "description": "Certified for achieving junior-level proficiency in typewriting through DOTE examination board."
+  },
+  {
+    "title": "UI/UX Design Internship",
+    "organization": "Nipix Tech",
+    "year": "2023",
+    "description": "Internship program focused on UI wireframing, prototyping, and usability design principles using Figma and real-world project tools."
+  }
+  ],
+  "aiInitiative": {
+  "title": "Beat Aware – AI-Powered Heart Attack Prediction Wearable",
+  "summary": "A smart wearable device and mobile app that uses real-time sensor data and machine learning to predict early signs of heart attacks and send instant alerts to users and emergency contacts.",
+  "role": "Backend Developer – Firebase integration, ML model handling, and real-time data processing.",
+  "techStack": [
+    "React Native (App)",
+    "ESP32, ECG/PPG Sensors (Hardware)",
+    "Python, TensorFlow, Scikit-learn (ML)",
+    "Firebase (Auth, Firestore, FCM)",
+    "Git & GitHub (Collaboration)"
+  ],
+  "features": [
+    "Real-time heart monitoring via wearable",
+    "ML-based heart attack risk prediction (LSTM + RF)",
+    "Emergency alert system (push notifications, SMS)",
+    "User-friendly mobile app",
+    "Firebase backend with secure data storage"
+  ],
+  "toolsUsed": [
+    "GitHub",
+    "Arduino IDE",
+    "Firebase Console",
+    "Visual Studio Code",
+    "Python (Jupyter)"
+  ],
+  "status": "Machine learning model trained and tested. UI integration and testing in progress."
+}
+
+}

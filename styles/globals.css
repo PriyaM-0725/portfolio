@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes blob2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-15px, 10px) scale(1.05);
+  }
+}
+.animate-blob2 {
+  animation: blob2 12s infinite ease-in-out;
+}
