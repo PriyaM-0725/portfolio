@@ -167,7 +167,7 @@ export default function Home({ profile }: { profile: ProfileData }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get('http://localhost:3000/api/profile');
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile`);
   const profile: ProfileData = res.data;
   return { props: { profile } };
 };
