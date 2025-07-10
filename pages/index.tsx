@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import axios from 'axios';
-import type { GetServerSideProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import NeonAtom from '@/components/NeonAtom';
 
@@ -166,8 +166,11 @@ export default function Home({ profile }: { profile: ProfileData }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile`);
   const profile: ProfileData = res.data;
-  return { props: { profile } };
+  return {
+    props: { profile },
+    revalidate: 60, // Rebuild every 60s
+  };
 };
