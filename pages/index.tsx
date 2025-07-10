@@ -168,6 +168,7 @@ export default function Home({ profile }: { profile: ProfileData }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile`);
+
   const profile: ProfileData = res.data;
   return {
     props: { profile },
