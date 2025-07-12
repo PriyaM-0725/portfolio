@@ -18,7 +18,7 @@ export default function Home({ profile }: { profile: ProfileData }) {
         <title>{`${profile.name} | Portfolio`}</title>
       </Head>
 
-      <main>
+      <main className="min-h-screen bg-black text-white px-6 py-16 font-sans relative overflow-hidden">
         {/* 🔹 Background Glows */}
         <div className="absolute top-20 -right-40 w-[500px] h-[500px] bg-cyan-500 opacity-30 blur-3xl rounded-full z-0" />
         <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-pink-400 opacity-20 blur-3xl rounded-full z-0" />
