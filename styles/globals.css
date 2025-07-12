@@ -17,11 +17,6 @@
 }
 
 /* Ensure dark background for full page (fixes white background behind header) */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #000;
-  color: white;
+html, body {
+  @apply bg-black text-white;
 }
