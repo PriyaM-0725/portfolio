@@ -16,7 +16,7 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className="bg-gray-950 bg-opacity-80 backdrop-blur-md shadow-md px-10 py-6 rounded-xl mb-6 sticky top-0 z-50">
+    <header className="sticky top-0 z-50 w-full bg-black/30 backdrop-blur-md px-10 py-6">
       <nav className="max-w-7xl mx-auto flex flex-wrap justify-center sm:justify-between items-center text-sm sm:text-base">
         <h1 className="text-cyan-400 font-bold text-xl">Mohanapriya M</h1>
         <div className="flex gap-6 flex-wrap mt-4 sm:mt-0">
