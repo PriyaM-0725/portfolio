@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const navItems = [
+  { label: 'Home', path: '/index' },
   { label: 'Education', path: '/education' },
   { label: 'Tech Stack', path: '/tech-stack' },
   { label: 'Certifications', path: '/certifications' },
