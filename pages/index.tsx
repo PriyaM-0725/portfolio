@@ -18,48 +18,50 @@ export default function Home({ profile }: { profile: ProfileData }) {
         <title>{`${profile.name} | Portfolio`}</title>
       </Head>
 
-      <main className="min-h-screen bg-black text-white px-6 py-16 font-sans relative overflow-hidden">
+      <main className="min-h-screen bg-black text-white py-16 font-sans relative overflow-hidden">
         {/* 🔹 Background Glows */}
         <div className="absolute top-20 -right-40 w-[500px] h-[500px] bg-cyan-500 opacity-30 blur-3xl rounded-full z-0" />
         <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-pink-400 opacity-20 blur-3xl rounded-full z-0" />
         <div className="absolute top-[45%] left-[50%] w-[500px] h-[500px] bg-purple-500 opacity-5 blur-3xl rounded-full z-0 transform -translate-x-1/2 -translate-y-1/2" />
 
         {/* 🔹 Landing Section */}
-        <section className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h1 className="text-sm text-cyan-400 tracking-widest uppercase mb-2">Hello, I'm</h1>
-            <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 mb-4">{profile.name}</h2>
-            <h3 className="text-2xl sm:text-3xl font-semibold text-pink-400 mb-6">{profile.title}</h3>
+        <section className="relative z-10">
+          <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h1 className="text-sm text-cyan-400 tracking-widest uppercase mb-2">Hello, I'm</h1>
+              <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 mb-4">{profile.name}</h2>
+              <h3 className="text-2xl sm:text-3xl font-semibold text-pink-400 mb-6">{profile.title}</h3>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href={profile.resumeLink}
-                className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
-                download
-              >
-                Download CV
-              </a>
-              <a
-                href={profile.github}
-                className="border border-cyan-500 hover:bg-cyan-500 text-cyan-500 hover:text-white px-6 py-3 rounded-full transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href={profile.resumeLink}
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
+                  download
+                >
+                  Download CV
+                </a>
+                <a
+                  href={profile.github}
+                  className="border border-cyan-500 hover:bg-cyan-500 text-cyan-500 hover:text-white px-6 py-3 rounded-full transition"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div className="hidden md:flex justify-center items-center -mt-10">
-            <div className="w-full max-w-[520px]">
-              <NeonAtom />
+            <div className="hidden md:flex justify-center items-center -mt-10">
+              <div className="w-full max-w-[520px]">
+                <NeonAtom />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 🔹 About Section with Gradient */}
-        <section id="about" className="relative z-10 bg-gradient-to-br from-gray-950 via-gray-900 to-black px-6 py-20">
-          <div className="max-w-5xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-10 shadow-xl">
+        {/* 🔹 About Section */}
+        <section id="about" className="relative z-10 bg-gradient-to-br from-gray-950 via-gray-900 to-black py-20">
+          <div className="max-w-5xl mx-auto px-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-10 shadow-xl">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
               About
             </h2>
@@ -73,13 +75,14 @@ export default function Home({ profile }: { profile: ProfileData }) {
           </div>
         </section>
 
-        {/* 📬 Contact Form Section */}
-        <section className="relative z-10 bg-gray-950 text-white px-6 py-20 border-t border-gray-800">
+        {/* 📬 Contact Section */}
+        <section className="relative z-10 bg-gray-950 text-white py-20 border-t border-gray-800">
+          {/* Contact Glows */}
           <div className="absolute top-[-100px] left-[-80px] w-[300px] h-[300px] bg-cyan-400 opacity-10 rounded-full blur-3xl z-0" />
           <div className="absolute bottom-[-120px] right-[-100px] w-[400px] h-[400px] bg-pink-500 opacity-10 rounded-full blur-3xl z-0" />
           <div className="absolute top-[40%] left-[45%] w-[250px] h-[250px] bg-purple-500 opacity-10 rounded-full blur-2xl z-0" />
 
-          <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="relative z-10 max-w-3xl mx-auto px-6">
             <h2 className="text-center text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
               Let’s Work Together
             </h2>
@@ -125,10 +128,12 @@ export default function Home({ profile }: { profile: ProfileData }) {
         </section>
 
         {/* 🔻 Footer */}
-        <footer className="relative z-10 bg-gray-950 border-t border-gray-800 px-6 py-8 text-center">
-          <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Mohanapriya M. All rights reserved.
-          </p>
+        <footer className="relative z-10 bg-gray-950 border-t border-gray-800 py-8 text-center">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-gray-500 text-sm">
+              &copy; {new Date().getFullYear()} Mohanapriya M. All rights reserved.
+            </p>
+          </div>
         </footer>
       </main>
     </>
