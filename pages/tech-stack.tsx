@@ -63,7 +63,7 @@ export default function TechStackPage() {
         <title>Tech Stack | Mohanapriya M</title>
       </Head>
 
-      <main className="min-h-screen bg-gray-900 text-white px-6 py-16 font-sans relative overflow-hidden">
+      <main className="min-h-screen bg-black text-white px-6 py-16 font-sans relative overflow-hidden">
         {/* 🔹 Background Glows */}
         <div className="absolute top-[-100px] right-[-80px] w-[350px] h-[350px] bg-pink-400 opacity-20 blur-3xl rounded-full z-0" />
         <div className="absolute bottom-[-120px] left-[-100px] w-[400px] h-[400px] bg-purple-700 opacity-10 blur-3xl rounded-full z-0" />

@@ -59,7 +59,7 @@ export default function EducationPage() {
         <title>Education | Mohanapriya M</title>
       </Head>
 
-      <main className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white px-6 py-16 font-sans relative overflow-hidden">
+      <main className="min-h-screen bg-black text-white px-6 py-16 font-sans relative overflow-hidden">
         {/* Background Glows */}
         <div className="absolute top-[-80px] left-[-80px] w-[400px] h-[400px] bg-pink-400 opacity-20 blur-3xl rounded-full z-0" />
         <div className="absolute top-32 -right-40 w-[500px] h-[500px] bg-cyan-500 opacity-30 blur-3xl rounded-full z-0" />

@@ -65,7 +65,7 @@ export default function CertificationsPage() {
         <title>Certifications | Mohanapriya M</title>
       </Head>
 
-      <main className="relative min-h-screen bg-gray-900 text-white px-6 py-16 font-sans overflow-hidden">
+      <main className="relative min-h-screen bg-black text-white px-6 py-16 font-sans overflow-hidden">
         {/* Background glows */}
         <div className="absolute top-10 -left-20 w-[300px] h-[300px] bg-cyan-400 opacity-20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 -right-24 w-[350px] h-[350px] bg-pink-300 opacity-10 rounded-full blur-3xl" />

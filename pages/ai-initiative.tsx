@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 interface AiData {
@@ -25,7 +24,7 @@ export default function AiInitiative() {
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-gray-900 text-white p-10 text-center">
+      <main className="min-h-screen bg-black text-white flex items-center justify-center">
         <p className="text-gray-400">Loading AI initiative...</p>
       </main>
     );
@@ -37,23 +36,32 @@ export default function AiInitiative() {
         <title>{data.title} | Mohanapriya M</title>
       </Head>
 
-      <main className="relative min-h-screen bg-gray-900 text-white px-6 py-16 font-sans overflow-hidden">
+      <main className="relative min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-900 text-white px-6 py-20 overflow-hidden">
         {/* 🌈 Background Glows */}
-        <div className="absolute top-[-100px] right-[-80px] w-[350px] h-[350px] bg-cyan-400 opacity-20 blur-3xl rounded-full z-0" />
-        <div className="absolute bottom-[-120px] left-[-100px] w-[400px] h-[400px] bg-pink-700 opacity-10 blur-3xl rounded-full z-0" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600 opacity-10 blur-3xl rounded-full z-0" />
+        <div className="absolute top-[-80px] left-[-60px] w-[400px] h-[400px] bg-cyan-500 opacity-20 blur-3xl rounded-full z-0" />
+        <div className="absolute bottom-[-120px] right-[-100px] w-[400px] h-[400px] bg-pink-600 opacity-10 blur-3xl rounded-full z-0" />
+        <div className="absolute top-[50%] left-[50%] w-[400px] h-[400px] bg-purple-700 opacity-10 blur-3xl rounded-full z-0 transform -translate-x-1/2 -translate-y-1/2" />
 
         <section className="relative z-10 max-w-5xl mx-auto">
-          <h1 className="text-center text-cyan-400 text-sm tracking-widest uppercase mb-2">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-sm tracking-widest uppercase text-cyan-400 mb-2"
+          >
             AI & Health Innovation
-          </h1>
-          <h2 className="text-center text-4xl font-bold mb-12">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-              {data.title}
-            </span>
-          </h2>
+          </motion.h1>
 
-          <div className="space-y-10">
+          <motion.h2
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center text-4xl sm:text-5xl font-bold mb-12 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
+          >
+            {data.title}
+          </motion.h2>
+
+          <div className="space-y-12">
             <FadeCard title="🗒️ Project Summary" content={data.summary} />
             <FadeCard title="👩‍💻 Role" content={data.role} />
             <FadeList title="💻 Tech Stack" items={data.techStack} />
@@ -61,44 +69,40 @@ export default function AiInitiative() {
             <FadeList title="⚙️ Tools Used" items={data.toolsUsed} />
             <FadeCard title="📊 Current Status" content={data.status} />
           </div>
-
-          
         </section>
       </main>
     </>
   );
 }
 
-// 🔹 Reusable Motion Card
 function FadeCard({ title, content }: { title: string; content: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-gray-800 border border-cyan-600 rounded-xl p-6 shadow-md hover:shadow-cyan-400/30 transition"
+      className="bg-gray-900/70 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md hover:shadow-cyan-500/20 transition"
     >
-      <h3 className="text-xl font-semibold text-cyan-300 mb-2">{title}</h3>
-      <p className="text-gray-300 text-sm sm:text-base">{content}</p>
+      <h3 className="text-xl font-semibold text-cyan-300 mb-3">{title}</h3>
+      <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{content}</p>
     </motion.div>
   );
 }
 
-// 🔹 Reusable Motion List
 function FadeList({ title, items }: { title: string; items: string[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="bg-gray-800 border border-cyan-600 rounded-xl p-6 shadow-md hover:shadow-cyan-400/30 transition"
+      transition={{ duration: 0.6 }}
+      className="bg-gray-900/70 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md hover:shadow-purple-500/20 transition"
     >
-      <h3 className="text-xl font-semibold text-cyan-300 mb-3">{title}</h3>
-      <ul className="list-disc list-inside space-y-1 text-sm sm:text-base text-gray-300">
-        {items.map((item, idx) => (
-          <li key={idx}>{item}</li>
+      <h3 className="text-xl font-semibold text-purple-300 mb-3">{title}</h3>
+      <ul className="list-disc list-inside space-y-2 text-sm sm:text-base text-gray-300">
+        {items.map((item, i) => (
+          <li key={i}>{item}</li>
         ))}
       </ul>
     </motion.div>

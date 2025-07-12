@@ -22,7 +22,7 @@ export default function Home({ profile }: { profile: ProfileData }) {
         {/* 🔹 Background Glows */}
         <div className="absolute top-20 -right-40 w-[500px] h-[500px] bg-cyan-500 opacity-30 blur-3xl rounded-full z-0" />
         <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-pink-400 opacity-20 blur-3xl rounded-full z-0" />
-        <div className="absolute top-[45%] left-[50%] w-[500px] h-[500px] bg-purple-700 opacity-15 blur-3xl rounded-full z-0 transform -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-[45%] left-[50%] w-[500px] h-[500px] bg-purple-500 opacity-5 blur-3xl rounded-full z-0 transform -translate-x-1/2 -translate-y-1/2" />
 
         {/* 🔹 Landing Section */}
         <section className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
