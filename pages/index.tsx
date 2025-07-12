@@ -128,13 +128,13 @@ export default function Home({ profile }: { profile: ProfileData }) {
         </section>
 
         {/* 🔻 Footer */}
-        <footer className="relative z-10 bg-gray-950 border-t border-gray-800 py-8 text-center">
-          <div className="max-w-7xl mx-auto px-6">
-            <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Mohanapriya M. All rights reserved.
-            </p>
-          </div>
-        </footer>
+        <footer className="bg-gray-950 border-t border-gray-800 py-8 text-center">
+    <div className="max-w-7xl mx-auto px-6">
+      <p className="text-gray-500 text-sm">
+        &copy; {new Date().getFullYear()} Mohanapriya M. All rights reserved.
+      </p>
+    </div>
+  </footer>
       </main>
     </>
   );
