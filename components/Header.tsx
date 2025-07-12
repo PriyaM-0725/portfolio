@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const navItems = [
-  { label: 'Home', path: '/index' },
+  { label: 'Home', path: '/' }, 
   { label: 'Education', path: '/education' },
   { label: 'Tech Stack', path: '/tech-stack' },
   { label: 'Certifications', path: '/certifications' },
   { label: 'AI Initiative', path: '/ai-initiative' },
 ];
+
 
 export default function Header() {
   const router = useRouter();
