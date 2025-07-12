@@ -148,14 +148,7 @@ export default function CertificationsPage() {
             })}
           </div>
 
-          {/* Home button */}
-          <div className="mt-20 text-center">
-            <Link href="/">
-              <button className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 hover:brightness-110 text-white px-6 py-3 rounded-full font-medium shadow-lg transition duration-300">
-                Home
-              </button>
-            </Link>
-          </div>
+          
         </div>
       </main>
     </>

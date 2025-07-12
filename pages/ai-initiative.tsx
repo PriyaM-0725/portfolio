@@ -62,14 +62,7 @@ export default function AiInitiative() {
             <FadeCard title="📊 Current Status" content={data.status} />
           </div>
 
-          {/* 🌟 Gradient Home Button */}
-          <div className="mt-12 text-center">
-            <Link href="/">
-              <button className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:brightness-110 text-white px-6 py-3 rounded-full font-medium shadow-lg transition duration-300">
-                Home
-              </button>
-            </Link>
-          </div>
+          
         </section>
       </main>
     </>
