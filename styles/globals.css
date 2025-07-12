@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Blob Animation */
 @keyframes blob2 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -9,6 +11,17 @@
     transform: translate(-15px, 10px) scale(1.05);
   }
 }
+
 .animate-blob2 {
   animation: blob2 12s infinite ease-in-out;
+}
+
+/* Ensure dark background for full page (fixes white background behind header) */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
 }
