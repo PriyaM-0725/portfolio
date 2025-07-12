@@ -18,5 +18,9 @@
 
 /* Ensure dark background for full page (fixes white background behind header) */
 html, body {
-  @apply bg-black text-white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  overflow-x: hidden;
 }
