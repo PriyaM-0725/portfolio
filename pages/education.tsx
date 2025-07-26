@@ -26,33 +26,6 @@ export default function EducationPage() {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
-  const cardThemes = [
-    {
-      gradient: 'from-pink-600 via-pink-500 to-rose-400',
-      glow: 'hover:shadow-[0_0_25px_#ec489980]',
-    },
-    {
-      gradient: 'from-purple-600 via-purple-500 to-violet-400',
-      glow: 'hover:shadow-[0_0_25px_#a855f780]',
-    },
-    {
-      gradient: 'from-indigo-600 via-indigo-500 to-blue-400',
-      glow: 'hover:shadow-[0_0_25px_#6366f180]',
-    },
-    {
-      gradient: 'from-emerald-600 via-emerald-500 to-green-400',
-      glow: 'hover:shadow-[0_0_25px_#10b98180]',
-    },
-    {
-      gradient: 'from-yellow-500 via-amber-400 to-orange-400',
-      glow: 'hover:shadow-[0_0_25px_#f59e0b80]',
-    },
-    {
-      gradient: 'from-cyan-600 via-sky-500 to-blue-400',
-      glow: 'hover:shadow-[0_0_25px_#22d3ee80]',
-    },
-  ];
-
   return (
     <>
       <Head>
@@ -78,16 +51,15 @@ export default function EducationPage() {
         {/* Education Cards */}
         <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {education.map((item, idx) => {
-            const theme = cardThemes[idx % cardThemes.length];
             const isOpen = openIndex === idx;
 
             return (
               <div
                 key={idx}
-                className={`relative rounded-2xl p-6 transition-all duration-300 transform backdrop-blur-lg border border-white/10 bg-gradient-to-br ${theme.gradient} ${
+                className={`relative rounded-2xl p-6 transition-all duration-300 transform backdrop-blur-lg border border-white/10 bg-white/5 ${
                   isOpen
                     ? 'scale-[1.03]'
-                    : `hover:-translate-y-2 hover:scale-[1.02] ${theme.glow}`
+                    : 'hover:-translate-y-2 hover:scale-[1.02]'
                 }`}
               >
                 {/* Education Level Box */}
@@ -129,8 +101,6 @@ export default function EducationPage() {
             );
           })}
         </div>
-
-       
       </main>
     </>
   );
