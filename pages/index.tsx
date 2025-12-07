@@ -11,11 +11,27 @@ interface ProfileData {
   resumeLink: string;
 }
 
+// A safe default profile to use if fetching fails.
+const DEFAULT_PROFILE: ProfileData = {
+  name: 'Mohanapriya M',
+  title: 'Front End Developer and Data Analyst',
+  bio: 'Front-end developer with a passion for data visualization and user-centered design.',
+  github: 'https://github.com/your-username',
+  // Use an empty string rather than a `#` so it cannot be misinterpreted.
+  resumeLink: '',
+};
+
 export default function Home({ profile }: { profile: ProfileData }) {
+  // Use the incoming profile, or fall back to defaults so the UI never crashes.
+  const safeProfile = profile || DEFAULT_PROFILE;
+
+  // Force the visible role text in the UI to the requested value (keeps UI consistent).
+  const displayTitle = 'Front End Developer and Data Analyst';
+
   return (
     <>
       <Head>
-        <title>{`${profile.name} | Portfolio`}</title>
+        <title>{`${safeProfile.name} | Portfolio`}</title>
       </Head>
 
       <main className="min-h-screen bg-black text-white py-16 font-sans relative overflow-hidden">
@@ -29,19 +45,30 @@ export default function Home({ profile }: { profile: ProfileData }) {
           <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h1 className="text-sm text-cyan-400 tracking-widest uppercase mb-2">Hello, I'm</h1>
-              <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 mb-4">{profile.name}</h2>
-              <h3 className="text-2xl sm:text-3xl font-semibold text-pink-400 mb-6">{profile.title}</h3>
+              <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 mb-4">{safeProfile.name}</h2>
+              <h3 className="text-2xl sm:text-3xl font-semibold text-pink-400 mb-6">{displayTitle}</h3>
 
               <div className="flex flex-wrap gap-4">
+                {safeProfile.resumeLink ? (
+                  <a
+                    href={safeProfile.resumeLink}
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
+                    download
+                  >
+                    Download CV
+                  </a>
+                ) : (
+                  <button
+                    className="bg-cyan-700 opacity-60 cursor-not-allowed text-white px-6 py-3 rounded-full transition"
+                    title="Resume not provided"
+                    disabled
+                  >
+                    Resume Unavailable
+                  </button>
+                )}
+
                 <a
-                  href={profile.resumeLink}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
-                  download
-                >
-                  Download CV
-                </a>
-                <a
-                  href={profile.github}
+                  href={safeProfile.github || '#'}
                   className="border border-cyan-500 hover:bg-cyan-500 text-cyan-500 hover:text-white px-6 py-3 rounded-full transition"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -66,11 +93,17 @@ export default function Home({ profile }: { profile: ProfileData }) {
               About
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg text-justify">
-              I’m <span className="text-pink-400 font-semibold">Mohanapriya M</span>, a passionate Front-End Developer and UI/UX Designer dedicated to crafting digital experiences that are intuitive, engaging, and accessible.
-              <br /><br />
-              With a strong foundation in <span className="text-cyan-400 font-semibold">HTML, CSS, JavaScript, and React</span>, I specialize in building responsive user interfaces with modern design principles.
-              <br /><br />
-              Whether it’s prototyping UI concepts or optimizing performance, I believe in delivering thoughtful, user-centered results — with attention to detail and a deep curiosity for learning.
+              {safeProfile.bio || (
+                <>
+                  I’m <span className="text-pink-400 font-semibold">{safeProfile.name}</span>, a passionate <span className="text-cyan-400 font-semibold">Front-End Developer and Data Analyst</span> dedicated to crafting digital experiences that are intuitive, engaging, and accessible.
+                </>
+              )}
+              <br />
+              <br />
+              With a strong foundation in <span className="text-cyan-400 font-semibold">HTML, CSS, JavaScript, and React</span>, I specialize in building responsive user interfaces with modern design principles — and pairing them with data-driven insights to inform design and product decisions.
+              <br />
+              <br />
+              Whether it’s prototyping UI concepts, visualizing data, or optimizing performance, I believe in delivering thoughtful, user-centered results — with attention to detail and a deep curiosity for learning.
             </p>
           </div>
         </section>
@@ -129,23 +162,42 @@ export default function Home({ profile }: { profile: ProfileData }) {
 
         {/* 🔻 Footer */}
         <footer className="bg-gray-950 border-t border-gray-800 py-8 text-center">
-    <div className="max-w-7xl mx-auto px-6">
-      <p className="text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} Mohanapriya M. All rights reserved.
-      </p>
-    </div>
-  </footer>
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-gray-500 text-sm">
+              &copy; {new Date().getFullYear()} {safeProfile.name}. All rights reserved.
+            </p>
+          </div>
+        </footer>
       </main>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/profile`);
-  const profile: ProfileData = res.data;
+  // Some environments (like the sandbox) may not provide NEXT_PUBLIC_BASE_URL.
+  // Build a safe URL and fall back to defaults when necessary.
+  const envBase = process.env.NEXT_PUBLIC_BASE_URL;
+  const fallbackLocal = `http://localhost:${process.env.PORT || 3000}`;
+  const baseUrl = envBase && envBase !== 'null' ? envBase.replace(/\/+$/, '') : fallbackLocal;
 
-  return {
-    props: { profile },
-    revalidate: 60,
-  };
+  const apiUrl = `${baseUrl}/api/profile`;
+
+  try {
+    const res = await axios.get(apiUrl);
+    const profile: ProfileData = res.data;
+
+    return {
+      props: { profile },
+      revalidate: 60,
+    };
+  } catch (err) {
+    // Log the error to the console for debugging but don't crash the build.
+    console.error('Failed to fetch profile at', apiUrl, err);
+
+    // Return a safe fallback profile so the page still renders.
+    return {
+      props: { profile: DEFAULT_PROFILE },
+      revalidate: 60,
+    };
+  }
 };
