@@ -2,6 +2,8 @@ import Head from 'next/head';
 import axios from 'axios';
 import type { GetStaticProps } from 'next';
 import NeonAtom from '@/components/NeonAtom';
+import { useState } from 'react';
+
 
 interface ProfileData {
   name: string;
@@ -22,6 +24,24 @@ const DEFAULT_PROFILE: ProfileData = {
 };
 
 export default function Home({ profile }: { profile: ProfileData }) {
+  // Contact form state
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [message, setMessage] = useState('');
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  await fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, message }),
+  });
+
+  setName('');
+  setEmail('');
+  setMessage('');
+};
+
   // Use the incoming profile, or fall back to defaults so the UI never crashes.
   const safeProfile = profile || DEFAULT_PROFILE;
 
@@ -123,30 +143,43 @@ export default function Home({ profile }: { profile: ProfileData }) {
               Got an idea, opportunity, or just want to say hi? Send me a message and let’s connect!
             </p>
 
-            <form className="bg-gray-800 bg-opacity-60 backdrop-blur-md border border-white/10 rounded-2xl p-8 space-y-6 shadow-xl">
+            <form
+  onSubmit={handleSubmit}
+  className="bg-gray-800 bg-opacity-60 backdrop-blur-md border border-white/10 rounded-2xl p-8 space-y-6 shadow-xl"
+>
+
               <div>
                 <label className="block text-sm font-medium text-cyan-300 mb-1">Your Name</label>
                 <input
-                  type="text"
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-3 bg-gray-900 border border-cyan-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
-                />
+  type="text"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  placeholder="Enter your name"
+  className="w-full px-4 py-3 bg-gray-900 border border-cyan-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
+/>
+
               </div>
               <div>
                 <label className="block text-sm font-medium text-cyan-300 mb-1">Email Address</label>
                 <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 bg-gray-900 border border-pink-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
-                />
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  placeholder="you@example.com"
+  className="w-full px-4 py-3 bg-gray-900 border border-pink-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+/>
+
               </div>
               <div>
                 <label className="block text-sm font-medium text-cyan-300 mb-1">Message</label>
                 <textarea
-                  rows={5}
-                  placeholder="Your message..."
-                  className="w-full px-4 py-3 bg-gray-900 border border-purple-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                ></textarea>
+  rows={5}
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  placeholder="Your message..."
+  className="w-full px-4 py-3 bg-gray-900 border border-purple-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+></textarea>
+
               </div>
               <div className="text-center">
                 <button
