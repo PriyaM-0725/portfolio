@@ -16,7 +16,7 @@ interface ProfileData {
 // A safe default profile to use if fetching fails.
 const DEFAULT_PROFILE: ProfileData = {
   name: 'Mohanapriya M',
-  title: 'Front End Developer and Data Analyst',
+  title: 'Web Developer and Data Analyst',
   bio: 'Front-end developer with a passion for data visualization and user-centered design.',
   github: 'https://github.com/your-username',
   // Use an empty string rather than a `#` so it cannot be misinterpreted.
@@ -46,7 +46,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   const safeProfile = profile || DEFAULT_PROFILE;
 
   // Force the visible role text in the UI to the requested value (keeps UI consistent).
-  const displayTitle = 'Front End Developer and Data Analyst';
+  const displayTitle = 'Web Developer and Data Analyst';
 
   return (
     <>
@@ -115,12 +115,12 @@ const handleSubmit = async (e: React.FormEvent) => {
             <p className="text-gray-300 leading-relaxed text-lg text-justify">
               {safeProfile.bio || (
                 <>
-                  I’m <span className="text-pink-400 font-semibold">{safeProfile.name}</span>, a passionate <span className="text-cyan-400 font-semibold">Front-End Developer and Data Analyst</span> dedicated to crafting digital experiences that are intuitive, engaging, and accessible.
+                  I’m <span className="text-pink-400 font-semibold">{safeProfile.name}</span>, a passionate <span className="text-cyan-400 font-semibold">Web Developer and Data Analyst</span> dedicated to crafting digital experiences that are intuitive, engaging, and accessible.
                 </>
               )}
               <br />
               <br />
-              With a strong foundation in <span className="text-cyan-400 font-semibold">HTML, CSS, JavaScript, and React</span>, I specialize in building responsive user interfaces with modern design principles — and pairing them with data-driven insights to inform design and product decisions.
+              With a strong foundation in <span className="text-cyan-400 font-semibold">HTML, CSS, JavaScript, Typescript and React</span>, I specialize in building responsive user interfaces with modern design principles — and pairing them with data-driven insights to inform design and product decisions.
               <br />
               <br />
               Whether it’s prototyping UI concepts, visualizing data, or optimizing performance, I believe in delivering thoughtful, user-centered results — with attention to detail and a deep curiosity for learning.
