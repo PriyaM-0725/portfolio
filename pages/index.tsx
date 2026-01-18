@@ -70,13 +70,14 @@ const handleSubmit = async (e: React.FormEvent) => {
 
               <div className="flex flex-wrap gap-4">
                 {safeProfile.resumeLink ? (
-                  <a
-                    href={safeProfile.resumeLink}
-                    className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
-                    download
-                  >
-                    Download CV
-                  </a>
+                 <a
+  href={encodeURI(safeProfile.resumeLink)}
+  className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition"
+  download
+>
+  Download Resume
+</a>
+
                 ) : (
                   <button
                     className="bg-cyan-700 opacity-60 cursor-not-allowed text-white px-6 py-3 rounded-full transition"
